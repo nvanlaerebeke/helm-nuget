@@ -1,0 +1,4 @@
+name: nuget
+namespace: home
+tlssecret: home-tls
+hostname: nuget.crazyzone.be
