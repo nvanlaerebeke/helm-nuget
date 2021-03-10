@@ -8,7 +8,7 @@ data:
     {
       "ApiKey": "f0f67894-5a64-4ac1-9244-3b2d5b2c72ef",
       "PackageDeletionBehavior": "Unlist",
-      "AllowPackageOverwrites": false,
+      "AllowPackageOverwrites": true,
 
       "Database": {
         "Type": "Sqlite",
