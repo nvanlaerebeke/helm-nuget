@@ -4,7 +4,6 @@ metadata:
   labels:
     app: nuget
   name: nuget
-  namespace: {{ .Values.namespace }}
 spec:
   selector:
     app: nuget
