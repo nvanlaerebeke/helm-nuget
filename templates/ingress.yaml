@@ -4,6 +4,7 @@ metadata:
   name: ingress-nuget
   annotations:
       kubernetes.io/tls-acme: 'true'  
+      timestamp: "{{ now | unixEpoch }}"
 spec:
   tls:
     - secretName: {{ .Values.tlssecret }}

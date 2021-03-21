@@ -5,6 +5,9 @@ metadata:
     app: nuget
   name: nuget
 spec:
+  metadata:
+    annotations:
+      timestamp: "{{ now | unixEpoch }}"
   selector:
     app: nuget
   type: ClusterIP    

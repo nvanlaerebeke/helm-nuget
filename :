@@ -1,0 +1,78 @@
+[1mdiff --git a/templates/config-app.yaml b/templates/config-app.yaml[m
+[1mindex 9db0643..dffa0f2 100644[m
+[1m--- a/templates/config-app.yaml[m
+[1m+++ b/templates/config-app.yaml[m
+[36m@@ -2,6 +2,8 @@[m [mapiVersion: v1[m
+ kind: ConfigMap[m
+ metadata:[m
+   name: nuget-config-app[m
+[32m+[m[32m  annotations:[m
+[32m+[m[32m        timestamp: "{{ now | unixEpoch }}"[m
+ data:[m
+   appsettings.json: |[m
+     {[m
+[1mdiff --git a/templates/config-env.yaml b/templates/config-env.yaml[m
+[1mindex 9122a37..7ad715d 100644[m
+[1m--- a/templates/config-env.yaml[m
+[1m+++ b/templates/config-env.yaml[m
+[36m@@ -2,6 +2,8 @@[m [mapiVersion: v1[m
+ kind: ConfigMap[m
+ metadata:[m
+   name: nuget-config-env[m
+[32m+[m[32m  annotations:[m
+[32m+[m[32m    timestamp: "{{ now | unixEpoch }}"[m
+ data:[m
+   ApiKey: f0f67894-5a64-4ac1-9244-3b2d5b2c72ef[m
+   Storage__Type: FileSystem[m
+[1mdiff --git a/templates/deployment.yaml b/templates/deployment.yaml[m
+[1mindex 9801c9f..28b146a 100644[m
+[1m--- a/templates/deployment.yaml[m
+[1m+++ b/templates/deployment.yaml[m
+[36m@@ -13,6 +13,8 @@[m [mspec:[m
+     metadata:[m
+       labels:[m
+         app: nuget[m
+[32m+[m[32m      annotations:[m
+[32m+[m[32m        timestamp: "{{ now | unixEpoch }}"[m
+     spec:[m
+       volumes:[m
+         - name: nuget-storage[m
+[1mdiff --git a/templates/ingress.yaml b/templates/ingress.yaml[m
+[1mindex 4ca7bfd..39e5f7d 100644[m
+[1m--- a/templates/ingress.yaml[m
+[1m+++ b/templates/ingress.yaml[m
+[36m@@ -4,6 +4,7 @@[m [mmetadata:[m
+   name: ingress-nuget[m
+   annotations:[m
+       kubernetes.io/tls-acme: 'true'  [m
+[32m+[m[32m      timestamp: "{{ now | unixEpoch }}"[m
+ spec:[m
+   tls:[m
+     - secretName: {{ .Values.tlssecret }}[m
+[1mdiff --git a/templates/nuget-secret.yaml b/templates/nuget-secret.yaml[m
+[1mindex f285099..8bbabaa 100644[m
+[1m--- a/templates/nuget-secret.yaml[m
+[1m+++ b/templates/nuget-secret.yaml[m
+[36m@@ -2,6 +2,8 @@[m [mapiVersion: v1[m
+ kind: Secret[m
+ metadata:[m
+   name: nuget-secret[m
+[32m+[m[32m  annotations:[m
+[32m+[m[32m    timestamp: "{{ now | unixEpoch }}"[m
+ type: Opaque[m
+ data:[m
+   apiUrl: aHR0cHM6Ly9udWdldC5jcmF6eXpvbmUuYmUvdjMvaW5kZXguanNvbg==[m
+[1mdiff --git a/templates/service.yaml b/templates/service.yaml[m
+[1mindex a5ea2b7..d2932ff 100644[m
+[1m--- a/templates/service.yaml[m
+[1m+++ b/templates/service.yaml[m
+[36m@@ -5,6 +5,9 @@[m [mmetadata:[m
+     app: nuget[m
+   name: nuget[m
+ spec:[m
+[32m+[m[32m  metadata:[m
+[32m+[m[32m    annotations:[m
+[32m+[m[32m      timestamp: "{{ now | unixEpoch }}"[m
+   selector:[m
+     app: nuget[m
+   type: ClusterIP    [m
