@@ -4,7 +4,8 @@ metadata:
   labels:
     app: nuget
   name: nuget
-  namespace: {{ .Values.namespace }}
+  annotations:
+    timestamp: "{{ now | unixEpoch }}"
 spec:
   selector:
     app: nuget

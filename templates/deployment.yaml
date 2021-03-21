@@ -4,7 +4,6 @@ metadata:
   labels:
     app: nuget
   name: nuget
-  namespace: {{ .Values.namespace }}
 spec:
   replicas: 1
   selector:
@@ -14,6 +13,8 @@ spec:
     metadata:
       labels:
         app: nuget
+      annotations:
+        timestamp: "{{ now | unixEpoch }}"
     spec:
       volumes:
         - name: nuget-storage

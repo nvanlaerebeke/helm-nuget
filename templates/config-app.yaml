@@ -2,7 +2,8 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: nuget-config-app
-  namespace: {{ .Values.namespace }}
+  annotations:
+        timestamp: "{{ now | unixEpoch }}"
 data:
   appsettings.json: |
     {
