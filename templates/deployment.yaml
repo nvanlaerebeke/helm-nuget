@@ -30,6 +30,13 @@ spec:
         ports:
         - containerPort: 80
           name: nuget
+        readinessProbe:
+          httpGet:
+            scheme: HTTP
+            path: /
+            port: 80
+          initialDelaySeconds: 10
+          periodSeconds: 5          
         volumeMounts:
         - name: nuget-storage
           mountPath: /var/baget
